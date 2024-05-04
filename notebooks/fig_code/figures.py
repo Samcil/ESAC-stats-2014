@@ -111,14 +111,14 @@ def plot_tree_interactive(X, y):
         clf = DecisionTreeClassifier(max_depth=depth, random_state=0)
         visualize_tree(clf, X, y)
 
-    from IPython.html.widgets import interact
-    return interact(interactive_tree, depth=[1, 5])
+    from ipywidgets import interact
+    return interact(interactive_tree, depth=(1, 5))
 
 
 def plot_kmeans_interactive():
-    from IPython.html.widgets import interact
+    from ipywidgets import interact
     from sklearn.metrics.pairwise import euclidean_distances
-    from sklearn.datasets.samples_generator import make_blobs
+    from sklearn.datasets import make_blobs
     
     X, y = make_blobs(n_samples=300, centers=4,
                       random_state=0, cluster_std=0.60)
@@ -172,4 +172,4 @@ def plot_kmeans_interactive():
             plt.text(3.8, 9.5, "2. Update centroids to cluster means",
                      ha='right', va='top', size=14)
 
-    return interact(_kmeans_step, frame=[0, 50], n_clusters=[3, 5])
+    return interact(_kmeans_step, frame=(0, 50), n_clusters=(3, 5))
